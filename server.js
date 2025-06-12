@@ -121,7 +121,7 @@ passport.serializeUser(function(user, cb) {
 
 
 app.use(cors({
-    origin:"http://localhost:3000",
+    origin:process.env.FRONT_END,
     credentials:true
 }));
 app.use(express.urlencoded({extended:true}));
@@ -132,15 +132,15 @@ app.use(session({
     saveUninitialized:false,
     cookie:{
         maxAge:1000*60*60*24,
-        sameSite:"lax",
-        secure:false,
+        sameSite:"none",
+        secure:true,
     },
     store:MongoStore.create({mongoUrl:dbconnect})
 }));
 app.use(passport.authenticate('session'));
 
 app.post("/login",(req,res,next) => {
-
+     
     const assignedData = ["username","password"];
     const clientdata = req.body;
 
