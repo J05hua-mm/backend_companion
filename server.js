@@ -126,6 +126,7 @@ app.use(cors({
 }));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+app.set("trust proxy", 1);
 app.use(session({
     secret:secret_key,
     resave:false,
@@ -138,6 +139,7 @@ app.use(session({
     store:MongoStore.create({mongoUrl:dbconnect})
 }));
 app.use(passport.authenticate('session'));
+
 
 app.post("/login",(req,res,next) => {
      
