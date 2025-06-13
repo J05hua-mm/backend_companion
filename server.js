@@ -15,7 +15,7 @@ const app = express();
 const port = 4000;
 const saltrounds = process.env.SALTROUNDS;
 const dbconnect = process.env.DATABASE_URL;
-const secret_key = process.env.SECRET_KEY;
+const secret_key = parseInt(process.env.SECRET_KEY);
 
 
 async function databaseConnect() {
