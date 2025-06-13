@@ -12,6 +12,7 @@ import bcrypt from "bcrypt";
 import {validation,validation2,isEmpty,isValidEmail,dataKeymatch} from "./validations.js";
 
 const app = express();
+const port = process.env.PORT || 4000;
 const saltrounds = parseInt(process.env.SALTROUNDS);
 const dbconnect = process.env.DATABASE_URL;
 const secret_key = process.env.SECRET_KEY;
