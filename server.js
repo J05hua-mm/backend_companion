@@ -118,15 +118,13 @@ passport.serializeUser(function(user, cb) {
     }
   });
   
-
-
+app.set("trust proxy", 1);
 app.use(cors({
     origin:process.env.FRONT_END,
     credentials:true
 }));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-app.set("trust proxy", 1);
 app.use(session({
     secret:secret_key,
     resave:false,
